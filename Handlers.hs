@@ -27,6 +27,20 @@ doOp op = Comp (\k h -> clause op k h)
 --
 -- doOp = Comp . clause
 
+instance Applicative (Comp h) where
+  pure = return
+  (<*>) :: Comp h (a -> b) -> Comp h a -> Comp h b
+-- Writing out (now reduce):
+-- f <*> x = f >>= \f' ->
+--     x >>= \x' ->
+--         return (f' x')
+  Comp f <*> Comp y' =
+    Comp (\k h -> f (\x h' ->
+      handle ((\f' ->
+        Comp (\k' h -> y' (\z h'' ->
+          handle (return (f' z))
+            k' h'') h)) x) k h') h)
+
 instance Monad (Comp h) where
   return v     = Comp (\k h -> k v h)
   Comp c >>= f = Comp (\k h -> c (\x h' -> handle (f x) k h') h)
