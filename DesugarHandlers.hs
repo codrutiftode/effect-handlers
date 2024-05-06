@@ -184,10 +184,10 @@ shallowHandlerParser s = makeHandlerDef True (parseHandlerDef s)
 
 makeHandlerDef :: Bool -> HandlerDef -> Q [Dec]
 makeHandlerDef shallow (h, name, ts, sig, r, cs) =
-  do 
-    let cname = mkName (let (c:cs) = name in toUpper(c) : cs)
-        fname = mkName (let (c:cs) = name in toLower(c) : cs)
-        
+  do
+    let cname = mkName (let (c:cs) = name in toUpper c : cs)
+        fname = mkName (let (c:cs) = name in toLower c : cs)
+
         (args, result') = splitFunType True (parseType (r ++ " -> ()"))
         (tyvars, parentSig, constraint, result) =
           case h of
@@ -196,11 +196,11 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
                 h' = mkName h
                 result = appType (ConT (mkName "Comp")) [VarT h', result']
             Nothing     -> (map mkName ts, [], Nothing, result')
-        
+
         plainHandles = mkName "Handles"
-        
+
         happ = ConT cname `appType` map VarT tyvars
-        
+
         handlerType =
           DataD [] cname
                     (map (\tv -> KindedTV tv StarT) tyvars)
@@ -216,31 +216,31 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
         innerInstance =
           TySynInstD (mkName "Inner")
           (TySynEqn [appType (ConT cname) (map VarT tyvars)] (VarT (last tyvars)))
-        
+
         CaseE _ cases = parseExp ("case undefined of\n" ++ cs)
-        
+
         unWrap :: Pat -> Pat
         unWrap (ParensP p) = unWrap p
         unWrap p           = p
-        
+
         delve :: (String -> Bool) -> Pat -> Bool
         delve pred p | ConP op _ <- unWrap p = pred (nameBase op)
-        
+
         matchOp :: (String -> Bool) -> Match -> Bool
         matchOp pred (Match pat _ _) = delve pred pat
-        
+
         opCases = filter (matchOp (/= "Return")) cases
         retCases =
           case filter (matchOp (== "Return")) cases of
             []       -> error "No return clause"
             retCases -> retCases
-                
+
         makeArgType []  = TupleT 0
         makeArgType [x] = parseType x
         makeArgType xs  = PromotedTupleT n `appType` map parseType xs
           where
             n = length xs
-        
+
         makeParentPredicate (opName, tys) =
             let opArgTypes = makeArgType tys in
             ClassP plainHandles [VarT (head tyvars),
@@ -259,17 +259,17 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
 
         clauseInstance :: (String, [String]) -> Q Dec
         clauseInstance (opName, tys) =
-          do      
+          do
             let opArgTypes = makeArgType tys
                 handles =
                   ConT plainHandles `appType` [happ, ConT (mkName opName), opArgTypes]
-                
+
                 makeClauseDecs :: [Match] -> Q [Dec]
                 makeClauseDecs cases =
                   do
                     clauses <- mapM makeClause cases
                     return [FunD (mkName "clause") clauses]
-            
+
                 makeClause :: Match -> Q Clause
                 makeClause (Match pat body wdecs) =
                   do
@@ -288,16 +288,16 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
                               (NormalB (appExp (VarE k') [VarE v, appExp (ConE cname) (map VarE hs)]))
                               []]) : wdecs
                     return (Clause ps body wdecs')
-        
+
                 split :: [Pat] -> ([Pat], Pat, [Pat])
                 split ps = (opArgs, k, handlerArgs)
                   where
                     (k:handlerArgs) = reverse (take (length args + 1) (reverse ps))
                     opArgs          = reverse (drop (length args + 1) (reverse ps))
-            
-            decs <- makeClauseDecs (filter (matchOp (== opName)) opCases)          
+
+            decs <- makeClauseDecs (filter (matchOp (== opName)) opCases)
             return (InstanceD (parentCtx ++ rawCtx) handles decs)
-            
+
         retDec = FunD (mkName "ret") (map makeClause retCases)
           where
             makeClause :: Match -> Clause
@@ -306,13 +306,13 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
                 where
                   ConP op (v:hs) = unWrap pat
                   ps = [v,ConP cname hs]
-        
+
         forwardInstance handles extra decs =
           InstanceD pre (ConT handles `appType` ([happ, op] ++ extra)) decs
             where
               op  = VarT (mkName "op")
               pre = [ClassP handles ([VarT (head tyvars), op] ++ extra)]
-        
+
         ds = parseDecs cs
     opClauses <- mapM clauseInstance sig
 
@@ -337,7 +337,7 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
                              VarE ret,
                              appExp (ConE cname) (map VarE xs)])
         return (FunD fname [Clause (handlerArgs ++ [VarP comp]) body [retDec]])
-          
+
     -- If this is a forwarding handler then generate the appropriate
     -- type class instances to forward operations to the parent
     -- handler.
@@ -368,7 +368,7 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
                 optype <- newName "optype"
                 return
                   [forwardInstance plainHandles [VarT optype] forwardDecs]
-    
+
     return (if shallow then
               [handlerType, resultInstance, innerInstance] ++
               opClauses ++ forwardClauses ++
@@ -394,12 +394,12 @@ makeOpDefs (us, name, ts, sig) =
 
         cname = mkName (let (c:cs) = name in toUpper(c) : cs)
         fname = mkName (let (c:cs) = name in toLower(c) : cs)
-       
+
         lift = mkName "doOp"
-       
+
         forallVars = map mkName us
         existsVars = map mkName ts
-        
+
         tyvars = forallVars ++ existsVars
     evar <- newName "s"
     uvar <- newName "t"
@@ -411,18 +411,18 @@ makeOpDefs (us, name, ts, sig) =
             n = length xs
         (ekind, eimp) = kindAndType existsVars
         (ukind, uimp) = kindAndType forallVars
-    
-        opType =          
+
+        opType =
           DataD [] cname
             [KindedTV evar ekind, KindedTV uvar ukind]
             [ForallC (map PlainTV tyvars) [EqualP (VarT evar) eimp, EqualP (VarT uvar) uimp]
-             (NormalC cname (map (\arg -> (IsStrict, arg)) args))]            
+             (NormalC cname (map (\arg -> (IsStrict, arg)) args))]
             []
         returnInstance =
           TySynInstD (mkName "Return")
           (TySynEqn [appType (ConT cname) [eimp, uimp]] result)
     xs <- mapM (\_ -> newName "x") args
-    
+
     opFunSig <-
       do
         h <- newName "handler"
@@ -433,7 +433,7 @@ makeOpDefs (us, name, ts, sig) =
                  (PlainTV h:map PlainTV tyvars)
                  [ClassP (mkName "Handles") [VarT h, ConT cname, eimp]]
                  (makeFunType h args)))
-          
+
     let opFun = FunD fname
                 [Clause (map VarP xs)
                  (NormalB (AppE
@@ -456,7 +456,7 @@ makeOpDefs (us, name, ts, sig) =
 --       Right (SigE (VarE _) t) -> t
 
 -- parseType :: String -> Type
--- parseType s | Right t <- MetaParse.parseType s = t 
+-- parseType s | Right t <- MetaParse.parseType s = t
 
 parseType :: String -> Type
 parseType s =
