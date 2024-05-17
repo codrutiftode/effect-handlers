@@ -137,7 +137,7 @@ opdef :: GenParser Char a OpDef
 opdef =
     do
       spaces
-      us <- option [] forall
+      us <- option [] forall'
       name <- upperId
       spaces
       xs <- tyVars
@@ -146,7 +146,7 @@ opdef =
       sig <- many anyChar
       return (us, name, xs, sig)
 
-forall =
+forall' =
     do
       string "forall"
       spaces

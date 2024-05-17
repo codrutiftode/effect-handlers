@@ -142,8 +142,6 @@ import Language.Haskell.Meta.Syntax.Translate (toType, toDecs)
 import Data.List
 import Data.Char(toUpper,toLower)
 
-
-
 {- Handles constraints -}
 handles = QuasiQuoter { quoteExp = undefined, quotePat = undefined,
                         quoteType = handlesParser, quoteDec = undefined}
@@ -214,11 +212,13 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
            is a TySynEqn.
         -}
         resultInstance =
-          TySynInstD (TySynEqn (Just [PlainTV (mkName "result") ()])
-              (appType (ConT cname) (map VarT tyvars)) result)
+          TySynInstD 
+            (TySynEqn Nothing (AppT (ConT (mkName "Result")) 
+                              (appType (ConT cname) (map VarT tyvars))) result)
         innerInstance =
-          TySynInstD (TySynEqn (Just [PlainTV (mkName "Inner") ()])
-              (appType (ConT cname) (map VarT tyvars)) (VarT (last tyvars)))
+          TySynInstD 
+            (TySynEqn Nothing (AppT (ConT (mkName "Inner")) 
+                              (appType (ConT cname) (map VarT tyvars))) (VarT (last tyvars)))
 
         CaseE _ cases = parseExp ("case undefined of\n" ++ cs)
 
@@ -431,7 +431,7 @@ makeOpDefs (us, name, ts, sig) =
 
         returnInstance =
           TySynInstD
-              (TySynEqn (Just [PlainTV (mkName "return") ()]) (appType (ConT cname) [eimp, uimp]) result)
+              (TySynEqn Nothing (AppT (ConT (mkName "Return")) (appType (ConT cname) [eimp, uimp])) result)
     xs <- mapM (\_ -> newName "x") args
 
     opFunSig <-
@@ -442,7 +442,7 @@ makeOpDefs (us, name, ts, sig) =
         return (SigD fname
                 (ForallT
                 -- TODO: either SpecifiedSpec or InferredSpec
-                 (map (\x -> PlainTV x SpecifiedSpec) tyvars)
+                 (PlainTV h SpecifiedSpec : map (\x -> PlainTV x SpecifiedSpec) tyvars)
                  [ConT (mkName "Handles") `appType` [VarT h, ConT cname, eimp]]
                  (makeFunType h args)))
 

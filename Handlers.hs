@@ -11,9 +11,11 @@
 
 module Handlers where
 
-type family Return (opApp :: *) :: *
-type family Result (h :: *) :: *
-class ((h :: *) `Handles` (op :: j -> k -> *)) (e :: j) | h op -> e where
+import Data.Kind (Type)
+
+type family Return (opApp :: Type) :: Type
+type family Result (h :: Type) :: Type
+class ((h :: Type) `Handles` (op :: j -> k -> Type)) (e :: j) | h op -> e where
   clause :: op e u -> (Return (op e u) -> h -> Result h) -> h -> Result h
 newtype Comp h a = Comp {handle :: (a -> h -> Result h) -> h -> Result h}
 doOp :: (h `Handles` op) e => op e u -> Comp h (Return (op e u))
@@ -28,7 +30,7 @@ doOp op = Comp (\k h -> clause op k h)
 -- doOp = Comp . clause
 
 instance Applicative (Comp h) where
-  pure = return
+  pure v = Comp (\k h -> k v h)
   (<*>) :: Comp h (a -> b) -> Comp h a -> Comp h b
 -- Writing out (now reduce):
 -- f <*> x = f >>= \f' ->
@@ -42,7 +44,6 @@ instance Applicative (Comp h) where
             k' h'') h)) x) k h') h)
 
 instance Monad (Comp h) where
-  return v     = Comp (\k h -> k v h)
   Comp c >>= f = Comp (\k h -> c (\x h' -> handle (f x) k h') h)
 
 instance Functor (Comp h) where
