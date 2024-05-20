@@ -314,7 +314,7 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
 
         forwardInstance :: Name -> [Type] -> [Dec] -> Dec
         forwardInstance handles extra decs =
-          InstanceD Nothing pre (ConT handles `appType` ([happ, op] ++ extra)) decs
+          InstanceD (Just Overlappable) pre (ConT handles `appType` ([happ, op] ++ extra)) decs
             where
               op  = VarT (mkName "op")
               pre :: Cxt

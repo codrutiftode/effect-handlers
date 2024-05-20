@@ -38,7 +38,6 @@ library
       HIA.ShallowCodensityHandlers
       HIA.ShallowFreeHandlers
       HIA.TopLevel
-      Lib
   other-modules:
       Paths_handlers_in_action
   autogen-modules:
@@ -56,14 +55,14 @@ library
   default-language: Haskell2010
 
 executable handlers-in-action-exe
-  main-is: Main.hs
+  main-is: Choice.hs
   other-modules:
       Paths_handlers_in_action
   autogen-modules:
       Paths_handlers_in_action
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Choice
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -71,6 +70,7 @@ executable handlers-in-action-exe
     , haskell-src-meta
     , mtl
     , parsec
+    , random
     , template-haskell ==2.20.0.0
   default-language: Haskell2010
 

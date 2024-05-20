@@ -48,7 +48,7 @@ library:
 
 executables:
   handlers-in-action-exe:
-    main:                Main.hs
+    main:                Choice
     source-dirs:         app
     ghc-options:
     - -threaded
@@ -56,6 +56,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - handlers-in-action
+    - random
 
 tests:
   handlers-in-action-test:
