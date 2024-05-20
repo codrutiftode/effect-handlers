@@ -9,7 +9,7 @@
     PolyKinds
   #-}
 
-module Handlers where
+module HIA.Handlers where
 
 import Data.Kind (Type)
 
@@ -31,7 +31,6 @@ doOp op = Comp (\k h -> clause op k h)
 
 instance Applicative (Comp h) where
   pure v = Comp (\k h -> k v h)
-  (<*>) :: Comp h (a -> b) -> Comp h a -> Comp h b
 -- Writing out (now reduce):
 -- f <*> x = f >>= \f' ->
 --     x >>= \x' ->

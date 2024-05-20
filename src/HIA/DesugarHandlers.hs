@@ -16,13 +16,13 @@
 
   These elaborate to:
 
-    data Get (e :: *) (u :: *) where
+    data Get (e :: Type) (u :: Type) where
       Get :: Get s ()
     type instance Return (Get s ()) = s
     get :: forall h s.(h `Handles` Get) () => Comp h s
     get = doOp Get
 
-    data Put (e :: *) (u :: *) where
+    data Put (e :: Type) (u :: Type) where
       Put :: s -> Put s ()
     type instance Return (Put s ()) = ()
     put :: forall h s . (h `Handles` Put) => s -> Comp h ()
@@ -39,7 +39,7 @@
 
   This elaborates to:
 
-    newtype StateHandler (s :: *) (a :: *) = StateHandler s
+    newtype StateHandler (s :: Type) (a :: Type) = StateHandler s
     type instance Result (StateHandler s a) = a
     instance (StateHandler s a `Handles` Get s) where
       clause Get     k' (StateHandler s) = k s s
@@ -62,7 +62,7 @@
 
   This prepends h to the list of FStateHandler's type variables yielding:
 
-    newtype FStateHandler (h :: *) (s :: *) (a :: *) = FStateHandler s
+    newtype FStateHandler (h :: Type) (s :: Type) (a :: Type) = FStateHandler s
     type instance Result (FStateHandler h s a) = a
     instance (FStateHandler h s a `Handles` Get s) where
       clause Get     k' (FStateHandler s) = k s s
@@ -89,7 +89,7 @@
 
   This elaborates to:
 
-    data Failure (e :: *) (u :: *) where
+    data Failure (e :: Type) (u :: Type) where
       Failure :: Failure () a
     type instance Return (Failure a) = a
     failure :: forall h a.(h `Handles` Failure) => Comp h a
@@ -105,7 +105,7 @@
 
   This elaborates to:
 
-    newtype MaybeHandler (a :: *) = MaybeHandler
+    newtype MaybeHandler (a :: Type) = MaybeHandler
     type instance Result (MaybeHandler a) = a
     instance (MaybeHandler a `Handles` Failure) where
       clause Failure k = Nothing
@@ -121,15 +121,14 @@
 
 {-# LANGUAGE FlexibleContexts #-}
 
-module DesugarHandlers where
+module HIA.DesugarHandlers where
 
-import ParseHandlers(parseOpDef,
-                     parseHandlerDef,
-                     parseHandlesConstraint,
-                     HandlesConstraint, HandlerDef, OpDef)
+import HIA.ParseHandlers(parseOpDef,
+                         parseHandlerDef,
+                         parseHandlesConstraint,
+                         HandlesConstraint, HandlerDef, OpDef)
 
 import Language.Haskell.TH
-import Language.Haskell.TH.Lib
 import Language.Haskell.TH.Quote
 
 import qualified Language.Haskell.Exts.Parser as Exts
@@ -139,10 +138,10 @@ import qualified Language.Haskell.Exts.Extension as Exts3
 import qualified Language.Haskell.Meta.Parse as MetaParse
 import Language.Haskell.Meta.Syntax.Translate (toType, toDecs)
 
-import Data.List
-import Data.Char(toUpper,toLower)
+import Data.Char (toUpper,toLower)
 
 {- Handles constraints -}
+handles :: QuasiQuoter
 handles = QuasiQuoter { quoteExp = undefined, quotePat = undefined,
                         quoteType = handlesParser, quoteDec = undefined}
 
@@ -170,9 +169,11 @@ makeHandlesConstraint (h, sig) =
       return (TupleT (length sig) `appType` map constraint sig)
 
 {- Handler definitions -}
+handler :: QuasiQuoter
 handler = QuasiQuoter { quoteExp = undefined, quotePat = undefined,
                         quoteType = undefined, quoteDec = handlerParser}
 
+shallowHandler :: QuasiQuoter
 shallowHandler = QuasiQuoter { quoteExp = undefined, quotePat = undefined,
                                quoteType = undefined, quoteDec = shallowHandlerParser}
 
@@ -308,7 +309,7 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
             makeClause (Match pat body wdecs) =
               Clause ps body wdecs
                 where
-                  ConP op xyz (v:hs) = unWrap pat
+                  ConP _op xyz (v:hs) = unWrap pat
                   ps = [v,ConP cname xyz hs]
 
         forwardInstance :: Name -> [Type] -> [Dec] -> Dec
@@ -319,7 +320,6 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
               pre :: Cxt
               pre = [(ConT handles) `appType` ([(VarT (head tyvars)), op] ++ extra)]
 
-        ds = parseDecs cs
     opClauses <- mapM clauseInstance sig
 
     -- It's tempting to try to give handler functions signatures that abstract away
@@ -347,7 +347,7 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
     -- If this is a forwarding handler then generate the appropriate
     -- type class instances to forward operations to the parent
     -- handler.
-    forwardClauses :: [Dec] <-
+    forwardClauses <-
           case h of
             Nothing -> return []
             Just _  ->
@@ -385,6 +385,7 @@ makeHandlerDef shallow (h, name, ts, sig, r, cs) =
               [handlerFun])
 
 {- Operation definitions -}
+operation :: QuasiQuoter
 operation = QuasiQuoter { quoteExp = undefined, quotePat = undefined,
                           quoteType = undefined, quoteDec = opParser}
 
@@ -498,9 +499,11 @@ parseDecs s =
 parseExp :: String -> Exp
 parseExp s | Right e <- MetaParse.parseExp s = e
 
+appExp :: Exp -> [Exp] -> Exp
 appExp f []     = f
 appExp f (e:es) = appExp (AppE f e) es
 
+appType :: Type -> [Type] -> Type
 appType f []     = f
 appType f (t:ts) = appType (AppT f t) ts
 

@@ -4,26 +4,34 @@
     MultiParamTypeClasses, FlexibleContexts,
     TypeOperators, GADTs, FunctionalDependencies, PolyKinds #-}
 
-module ShallowFreeHandlers where
+module HIA.ShallowFreeHandlers where
 
-type family Return (opApp :: *) :: *
-type family Result (h :: *) :: *
-type family Inner h :: *
+import Data.Kind (Type)
 
-class ((h :: *) `Handles` (op :: j -> k -> *)) (e :: j) | h op -> e where
+type family Return (opApp :: Type) :: Type
+type family Result (h :: Type) :: Type
+type family Inner h :: Type
+
+class ((h :: Type) `Handles` (op :: j -> k -> Type)) (e :: j) | h op -> e where
   clause :: op e u -> (Return (op e u) -> Comp h (Inner h)) -> h -> Result h
 
 data Comp h a where
   Ret :: a -> Comp h a
   Do  :: ((h `Handles` op) e) => op e u -> (Return (op e u) -> Comp h a) -> Comp h a
 
+instance Functor (Comp h) where
+  fmap f (Ret a) = Ret (f a)
+  fmap f (Do op k) = Do op (\x -> fmap f (k x))
+
+instance Applicative (Comp h) where
+  pure = Ret
+  (Ret f) <*> (Ret v) = Ret (f v)
+  (Ret f) <*> (Do op kv) = Do op (\x -> fmap f (kv x))
+  (Do op kf) <*> v = Do op (\x -> kf x <*> v)
+
 instance Monad (Comp h) where
-  return        = Ret
   Ret v   >>= f = f v
   Do op k >>= f = Do op (\x -> k x >>= f)
-
-instance Functor (Comp h) where
-  fmap f c = c >>= \x -> return (f x)
 
 doOp :: (h `Handles` op) e => op e u -> Comp h (Return (op e u))
 doOp op = Do op return

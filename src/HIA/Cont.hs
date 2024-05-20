@@ -10,10 +10,10 @@
     TypeOperators
  #-}
 
-module Cont where
+module HIA.Cont where
 
 import Control.Monad.Cont
-import DesugarHandlers
+import Data.Kind (Type)
 
 -- We start with a free monad for state
 data DataState a =
@@ -21,8 +21,20 @@ data DataState a =
   | GetDS ()  (Int -> DataState a)
   | PutDS Int (()  -> DataState a)
 
+instance Functor DataState where
+  fmap f (RetDS a) = RetDS (f a)
+  fmap f (GetDS () k) = GetDS () (\x -> fmap f (k x))
+  fmap f (PutDS i k) = PutDS i (\x -> fmap f (k x))
+
+instance Applicative DataState where
+  pure = RetDS
+  RetDS f <*> RetDS v = RetDS (f v)
+  RetDS f <*> GetDS () k = GetDS () (\x -> fmap f (k x))
+  RetDS f <*> PutDS i k = PutDS i (\x -> fmap f (k x))
+  GetDS () k <*> v = GetDS () (\x -> k x <*> v)
+  PutDS i k <*> v = PutDS i (\x -> k x <*> v)
+
 instance Monad DataState where
-  return = RetDS
   RetDS v >>= f = f v
   GetDS () k >>= f = GetDS () (\x -> k x >>= f)
   PutDS s  k >>= f = PutDS s  (\x -> k x >>= f)
@@ -100,8 +112,8 @@ simpleStateCont s comp = handleContState
 -- single handler argument to track the type == name of a handler and
 -- any parameters to the handler. All of the concrete operation
 -- clauses are inferred by the type class mechanism.
-type family Return (op :: *) :: *
-type family Result (h :: *) :: *
+type family Return (op :: Type) :: Type
+type family Result (h :: Type) :: Type
 class (h `Handles` op) where
   clause :: op -> (Return op -> h -> Result h) -> h -> Result h
 type Comp h a = Cont (h -> Result h) a 
@@ -124,7 +136,7 @@ type instance Return Put = ()
 put :: (h `Handles` Put) => Int -> Comp h ()
 put s = doOp (Put s)
 
-type SComp a = (h `Handles` Get, h `Handles` Put) => Comp h a
+type SComp a = forall h. (h `Handles` Get, h `Handles` Put) => Comp h a
 
 newtype SimpleState a = SimpleState Int
 type instance Result (SimpleState  a) = a

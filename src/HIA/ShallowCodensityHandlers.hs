@@ -5,11 +5,13 @@
     TypeOperators, GADTs
   #-}
 
-module ShallowCodensityHandlers where
+module HIA.ShallowCodensityHandlers where
 
-type family Return op :: *
-type family Result h :: *
-type family Inner h :: *     
+import Data.Kind (Type)
+
+type family Return op :: Type
+type family Result h :: Type
+type family Inner h :: Type     
 
 -- To achieve adequate performance it seems essential to have the
 -- continuation return a RawComp and expose handle'.
@@ -20,18 +22,30 @@ newtype Comp h a = Comp {unComp :: forall r.(a -> RawComp h r) -> RawComp h r}
 data RawComp h a where
   Ret :: a -> RawComp h a
   Do  :: (h `Handles` op) => op -> (Return op -> RawComp h a) -> RawComp h a
+
+instance Functor (RawComp h) where
+  fmap f (Ret a) = Ret (f a)
+  fmap f (Do op k) = Do op (\x -> fmap f (k x))
+
+instance Applicative (RawComp h) where
+  pure = Ret
+  (Ret f) <*> (Ret v) = Ret (f v)
+  (Ret f) <*> (Do op kv) = Do op (\x -> fmap f (kv x))
+  (Do op kf) <*> v = Do op (\x -> kf x <*> v)
+
 instance Monad (RawComp h) where
-  return        = Ret
   Ret v   >>= f = f v
   Do op k >>= f = Do op (\x -> k x >>= f)
-instance Functor (RawComp h) where
-  fmap f c = c >>= \x -> return (f x)
+
+instance Functor (Comp h) where
+  fmap f (Comp c) = Comp (\k -> c (\x -> k (f x)))
+
+instance Applicative (Comp h) where
+  pure v = Comp (\k -> k v)
+  (Comp f) <*> (Comp v) = Comp (\kb -> f (\f' -> v (\a' -> kb (f' a'))))
 
 instance Monad (Comp h) where
-  return v     = Comp (\k -> k v)
   Comp c >>= f = Comp (\k -> c (\x -> unComp (f x) k))
-instance Functor (Comp h) where
-  fmap f c = c >>= \x -> return (f x)
 
 lift :: RawComp h a -> Comp h a
 lift rawComp = Comp (\k -> rawComp >>= k)

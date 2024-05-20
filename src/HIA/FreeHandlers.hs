@@ -9,18 +9,30 @@
     PolyKinds
   #-}
 
-module FreeHandlers where
+module HIA.FreeHandlers where
 
-type family Return (opApp :: *) :: *
-type family Result (h :: *) :: *
-class ((h :: *) `Handles` (op :: j -> k -> *)) (e :: j) | h op -> e where
+import Data.Kind (Type)
+
+type family Return (opApp :: Type) :: Type
+type family Result (h :: Type) :: Type
+class ((h :: Type) `Handles` (op :: j -> k -> Type)) (e :: j) | h op -> e where
   clause :: op e u -> (Return (op e u) -> h -> Result h) -> h -> Result h
 
 data Comp h a where
   Ret :: a -> Comp h a
   Do  :: (h `Handles` op) e => op e u -> (Return (op e u) -> Comp h a) -> Comp h a
+
+instance Functor (Comp h) where
+  fmap f (Ret a) = Ret (f a)
+  fmap f (Do op k) = Do op (\x -> fmap f (k x))
+
+instance Applicative (Comp h) where
+  pure = Ret
+  (Ret f) <*> (Ret v) = Ret (f v)
+  (Ret f) <*> (Do op kv) = Do op (\x -> fmap f (kv x))
+  (Do op kf) <*> v = Do op (\x -> kf x <*> v)
+
 instance Monad (Comp h) where
-  return        = Ret
   Ret v   >>= f = f v
   Do op k >>= f = Do op (\x -> k x >>= f)
 

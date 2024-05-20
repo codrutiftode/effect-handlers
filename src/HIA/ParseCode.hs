@@ -1,4 +1,4 @@
-module ParseCode (top, paren) where
+module HIA.ParseCode (top, paren) where
 
 import Text.ParserCombinators.Parsec
 
@@ -61,6 +61,7 @@ quote q =
       char q
       return $ [q] ++ s ++ [q]
 
+quoteBody :: Char -> GenParser Char a String
 quoteBody q =
     do
       s <- many (noneOf [q,'\\'])

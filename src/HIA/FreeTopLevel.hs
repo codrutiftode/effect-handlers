@@ -1,4 +1,4 @@
-{- Top-level handlers -}
+{- Free top-level handlers -}
 
 {-# LANGUAGE TypeFamilies,
     MultiParamTypeClasses,
@@ -9,18 +9,18 @@
     QuasiQuotes
   #-}
 
-module TopLevel where
+module HIA.FreeTopLevel where
 
-import Handlers
-import DesugarHandlers
+import HIA.FreeHandlers
+import HIA.DesugarHandlers
 
+handlePure :: (forall h. Comp h a) -> a
 [handler|
   HandlePure a :: a handles {} where
     Return x -> x
 |]
-handlePure' :: (forall h.Comp h a) -> a
-handlePure' c = handlePure c
 
+handleIO :: Comp (HandleIO a) a -> IO a
 [operation|forall a.Io :: IO a -> a|]
 [handler|
   HandleIO a :: IO a handles {Io} where

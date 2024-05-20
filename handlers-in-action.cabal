@@ -1,0 +1,95 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           handlers-in-action
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/handlers-in-action#readme>
+homepage:       https://github.com/githubuser/handlers-in-action#readme
+bug-reports:    https://github.com/githubuser/handlers-in-action/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2024 Author name here
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/handlers-in-action
+
+library
+  exposed-modules:
+      HIA.CodensityHandlers
+      HIA.CodensityTopLevel
+      HIA.Cont
+      HIA.DesugarHandlers
+      HIA.FreeHandlers
+      HIA.FreeIdiomHandlers
+      HIA.FreeTopLevel
+      HIA.Handlers
+      HIA.ParseCode
+      HIA.ParseHandlers
+      HIA.ShallowCodensityHandlers
+      HIA.ShallowFreeHandlers
+      HIA.TopLevel
+      Lib
+  other-modules:
+      Paths_handlers_in_action
+  autogen-modules:
+      Paths_handlers_in_action
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind
+  build-depends:
+      base >=4.7 && <5
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable handlers-in-action-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_handlers_in_action
+  autogen-modules:
+      Paths_handlers_in_action
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+test-suite handlers-in-action-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_handlers_in_action
+  autogen-modules:
+      Paths_handlers_in_action
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010

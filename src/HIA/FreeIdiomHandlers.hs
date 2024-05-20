@@ -9,18 +9,18 @@
     DataKinds, PolyKinds
   #-}
 
-module FreeIdiomHandlers where
+module HIA.FreeIdiomHandlers where
 
 import Data.Maybe
-import Control.Applicative
+import Data.Kind (Type)
 
-type family Return (opApp :: *) :: *
-type family Result (h :: *) :: * -> *
-class ((h :: *) `Handles` (op :: j -> k -> *)) (e :: j) | h op -> e where
+type family Return (opApp :: Type) :: Type
+type family Result (h :: Type) :: Type -> Type
+class ((h :: Type) `Handles` (op :: j -> k -> Type)) (e :: j) | h op -> e where
   clause :: op e u -> (h -> Result h (Return (op e u) -> a)) -> h -> Result h a
 
 {- type lists as right-nested products -}
-type family RProd (ts :: [*]) :: *
+type family RProd (ts :: [Type]) :: Type
 type instance RProd '[]       = ()
 type instance RProd (t ': ts) = (t, RProd ts)
 
@@ -29,12 +29,12 @@ type instance RProd (t ': ts) = (t, RProd ts)
      
       FList f [a1,...,an] == [f a1,  ..., f ak]
 -}
-data FList (h :: *) (ts :: [*]) where
+data FList (h :: Type) (ts :: [Type]) where
   FNil ::                                               FList f '[]
   (:>) :: (h `Handles` op) e => op e u -> FList h ts -> FList h (Return (op e u) ': ts)
 
 {- type list concatenation -}
-type family (ts :: [*]) :++: (ts' :: [*]) :: [*]
+type family (ts :: [Type]) :++: (ts' :: [Type]) :: [Type]
 type instance '[]       :++: ts' = ts'
 type instance (t ': ts) :++: ts' = t ': (ts :++: ts')
 
@@ -79,19 +79,19 @@ handle (FreeApp (op :> ops) p) r h =
   clause op (handle (FreeApp ops (\xs x -> p (x, xs))) r) h
 
 {- formlets -}
-data Text (e :: *) (u :: *) where 
+data Text (e :: Type) (u :: Type) where 
   Text :: String -> Text () ()
 type instance Return (Text () ()) = ()
 text :: (h `Handles` Text) () => String -> Comp h ()
 text s = doOp (Text s)
 
-data Input (e :: *) (u :: *) where 
+data Input (e :: Type) (u :: Type) where 
   Input :: String -> Input () ()
 type instance Return (Input () ()) = String
 input :: (h `Handles` Input) () => String -> Comp h String
 input s = doOp (Input s)
 
-data Elem (e :: *) (u :: *) where 
+data Elem (e :: Type) (u :: Type) where 
   Elem :: String -> Atts -> Comp h a -> Elem h a
 type instance Return (Elem h a) = a
 elem :: (h `Handles` Elem) h => String -> Atts -> Comp h a -> Comp h a

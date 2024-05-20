@@ -1,8 +1,8 @@
-module ParseHandlers where
+module HIA.ParseHandlers where
 
 import Text.ParserCombinators.Parsec
 import Data.Char (isSpace)
-import ParseCode
+import HIA.ParseCode
 
 -- we could use the applicative interface...
 --
@@ -97,6 +97,7 @@ handlerdef =
       cs <- clauses
       return (h, name, ts, sig, r, cs)
 
+forward :: GenParser Char a (String, [(String, [String])], Maybe String)
 forward =
     do
       string "forward"
@@ -118,12 +119,16 @@ handlerConstraint =
     spaces
     return c
 
+isSpaceNoNewline :: GenParser Char a Char
 isSpaceNoNewline = satisfy (\c -> isSpace c && c /= '\n' && c /= '\r')
 
+result :: GenParser Char a String
 result = manyTill anyChar (try (lookAhead
                                 (do {many1 space; string "handles" <|>
                                                   string "where"})))
 --result = manyTill anyChar (try (do {spaces; string "where"; many isSpaceNoNewline; many newline}))
+
+clauses :: GenParser Char a String
 clauses = many anyChar
 
 {- Operation definitions -}
@@ -146,6 +151,7 @@ opdef =
       sig <- many anyChar
       return (us, name, xs, sig)
 
+forall' :: GenParser Char a [String]
 forall' =
     do
       string "forall"
