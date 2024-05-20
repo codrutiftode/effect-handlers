@@ -44,7 +44,7 @@ library
       Paths_handlers_in_action
   hs-source-dirs:
       src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures
   build-depends:
       base >=4.7 && <5
     , haskell-src-exts
@@ -62,7 +62,7 @@ executable aop-exe
       MRI_code.Interpreters
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is AOP
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is AOP
   build-depends:
       base >=4.7 && <5
     , containers
@@ -82,7 +82,7 @@ executable aopextra-exe
       MRI_code.Interpreters
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is AOPExtra
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is AOPExtra
   build-depends:
       base >=4.7 && <5
     , containers
@@ -98,7 +98,7 @@ executable choice-exe
   main-is: Choice.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Choice
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Choice
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -114,7 +114,7 @@ executable codensitypipes-exe
   main-is: CodensityPipes.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is CodensityPipes
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is CodensityPipes
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -129,7 +129,7 @@ executable codensitystate-exe
   main-is: CodensityState.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is CodensityState
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is CodensityState
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -144,7 +144,7 @@ executable delimitedcontinuations-exe
   main-is: DelimitedContinuations.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is DelimitedContinuations
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is DelimitedContinuations
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -159,7 +159,7 @@ executable exceptions-exe
   main-is: Exceptions.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Exceptions
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Exceptions
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -174,7 +174,7 @@ executable freepipes-exe
   main-is: FreePipes.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is FreePipes
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is FreePipes
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -189,7 +189,7 @@ executable freestate-exe
   main-is: FreeState.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is FreeState
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is FreeState
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -204,7 +204,7 @@ executable handlersentwinedheuristics-exe
   main-is: HandlersEntwinedHeuristics.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HandlersEntwinedHeuristics
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is HandlersEntwinedHeuristics
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -217,9 +217,11 @@ executable handlersentwinedheuristics-exe
 
 executable handlersheuristics-exe
   main-is: HandlersHeuristics.hs
+  other-modules:
+      HandlersMonadRef
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HandlersHeuristics
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is HandlersHeuristics
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -234,7 +236,7 @@ executable handlersmonadref-exe
   main-is: HandlersMonadRef.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HandlersMonadRef
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is HandlersMonadRef
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -249,14 +251,16 @@ executable hansei-exe
   main-is: HANSEI.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HANSEI
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is HANSEI
   build-depends:
       base >=4.7 && <5
+    , containers
     , handlers-in-action
     , haskell-src-exts
     , haskell-src-meta
     , mtl
     , parsec
+    , random
     , template-haskell ==2.20.0.0
   default-language: Haskell2010
 
@@ -264,7 +268,7 @@ executable iteratees-exe
   main-is: Iteratees.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Iteratees
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Iteratees
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -279,7 +283,7 @@ executable lift-exe
   main-is: Lift.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Lift
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Lift
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -294,7 +298,7 @@ executable lifth-exe
   main-is: LiftH.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is LiftH
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is LiftH
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -309,7 +313,7 @@ executable list-exe
   main-is: List.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is List
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is List
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -324,7 +328,7 @@ executable logic-exe
   main-is: Logic.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Logic
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Logic
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -339,7 +343,7 @@ executable nbe-exe
   main-is: Nbe.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Nbe
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Nbe
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -354,7 +358,7 @@ executable nbe0-exe
   main-is: Nbe0.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Nbe0
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Nbe0
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -369,7 +373,7 @@ executable nim-exe
   main-is: Nim.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Nim
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Nim
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -384,7 +388,7 @@ executable olegiteratees-exe
   main-is: OlegIteratees.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is OlegIteratees
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is OlegIteratees
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -399,7 +403,7 @@ executable parse-exe
   main-is: Parse.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Parse
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Parse
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -414,7 +418,7 @@ executable pipes-exe
   main-is: Pipes.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Pipes
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Pipes
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -429,7 +433,7 @@ executable pipespipes-exe
   main-is: PipesPipes.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is PipesPipes
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is PipesPipes
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -444,7 +448,7 @@ executable plainstate-exe
   main-is: PlainState.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is PlainState
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is PlainState
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -459,7 +463,7 @@ executable primitiverecursion-exe
   main-is: PrimitiveRecursion.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is PrimitiveRecursion
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is PrimitiveRecursion
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -474,7 +478,7 @@ executable shallowiteratees-exe
   main-is: ShallowIteratees.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is ShallowIteratees
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is ShallowIteratees
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -489,7 +493,7 @@ executable shallowpipes-exe
   main-is: ShallowPipes.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is ShallowPipes
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is ShallowPipes
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -504,7 +508,7 @@ executable shallowstate-exe
   main-is: ShallowState.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is ShallowState
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is ShallowState
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -519,7 +523,7 @@ executable state-exe
   main-is: State.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is State
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is State
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -534,7 +538,7 @@ executable stateiteratees-exe
   main-is: StateIteratees.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is StateIteratees
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is StateIteratees
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -549,7 +553,7 @@ executable updown-exe
   main-is: UpDown.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is UpDown
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is UpDown
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -564,7 +568,7 @@ executable wctail-exe
   main-is: WcTail.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is WcTail
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is WcTail
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -579,7 +583,7 @@ executable web-exe
   main-is: Web.hs
   hs-source-dirs:
       app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Web
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N -main-is Web
   build-depends:
       base >=4.7 && <5
     , handlers-in-action
@@ -599,7 +603,7 @@ test-suite handlers-in-action-test
       Paths_handlers_in_action
   hs-source-dirs:
       test
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -Wno-type-equality-requires-operators -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , handlers-in-action

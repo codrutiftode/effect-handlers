@@ -42,6 +42,8 @@ ghc-options:
 - -Wno-incomplete-patterns # Should re-enable in the future
 - -Wno-unused-local-binds # Should re-enable in the future
 - -Wno-unused-do-bind # Should re-enable in the future
+- -Wno-type-equality-requires-operators # Should re-enable in the future
+- -Wno-missing-signatures # Should re-enable in the future
 
 library:
   source-dirs: src
@@ -165,6 +167,8 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - handlers-in-action
+    - random
+    - containers
 
   handlersentwinedheuristics-exe:
     main:                HandlersEntwinedHeuristics
@@ -180,7 +184,8 @@ executables:
   handlersheuristics-exe:
     main:                HandlersHeuristics
     source-dirs:         app
-    other-modules:       []
+    other-modules:
+    - HandlersMonadRef
     ghc-options:
     - -threaded
     - -rtsopts

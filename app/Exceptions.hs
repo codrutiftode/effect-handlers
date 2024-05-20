@@ -6,7 +6,6 @@
 
 module Exceptions where
 
-import Control.Monad
 import HIA.Handlers
 import HIA.TopLevel
 import HIA.DesugarHandlers
@@ -44,3 +43,5 @@ divUnchecked comp = handlePure (divideHandler comp)
 divChecked :: D a -> Either String a
 divChecked comp = handlePure ((reportErrorHandler . divideHandler . checkZeroHandler) comp)
 
+main :: IO ()
+main = print (divChecked (divide 10 0))

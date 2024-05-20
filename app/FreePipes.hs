@@ -144,3 +144,6 @@ test7 n = blackhole <+< takePure 1000 <+< expoPipe n <+< produceFrom 0
 
 simple = test0
 nested = test7
+
+main :: IO ()
+main = printHandler test5 >>= print

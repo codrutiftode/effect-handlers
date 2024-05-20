@@ -24,8 +24,8 @@ type Ref a = IORef a
 [operation|ReadRef  s :: Ref s      -> s     |]
 [operation|WriteRef s :: Ref s -> s -> ()    |]
 
-type RWComp s a = ([handles|h {ReadRef s}|], [handles| h {WriteRef s}|]) => Comp h a
-type RefComp s a =
+type RWComp s a = forall h. ([handles|h {ReadRef s}|], [handles| h {WriteRef s}|]) => Comp h a
+type RefComp s a = forall h.
   ([handles|h {NewRef s}|]
   ,[handles|h {ReadRef s}|]
   ,[handles|h {WriteRef s}|]) => Comp h a
@@ -73,3 +73,6 @@ test3 = iORefState (countRef phrase1)
 
 test5 :: IO (Char, Int)
 test5 = iORefState (countRef phrase2)
+
+main :: IO ()
+main = test5 >>= print

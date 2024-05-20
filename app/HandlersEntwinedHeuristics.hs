@@ -12,7 +12,6 @@
 module HandlersEntwinedHeuristics where
 
 import Prelude hiding (fail)
-import Control.Monad (when)
 
 import HIA.ShallowFreeHandlers
 import Data.IORef
@@ -61,7 +60,7 @@ nbs' n t  =  do  ref <- newRef n
 delay 0  =  return ()
 delay n  =  delay (n-1) ||| delay (n-1)
 
-itd t  =  do  newRef False >>= go t 0 where
+itd t  =  do  newRef False >>= go t (0 :: Integer) where
     go t n ref  =    (t \|/ (delay n >> prune ref)) |||
                        do  b <- readRef ref
                            if b  then  do  writeRef ref False
@@ -75,12 +74,15 @@ itd t  =  do  newRef False >>= go t 0 where
 -- to take this `offline' after the reviews are due and discuss it
 -- in private.
 
-test5 = iORefState (listProlog (dibs' 20 (queens 8)))
-test6 = iORefState (listProlog (nbs' 1800 (queens 8)))
+test5 = iORefState (listProlog (dibs' (20 :: Integer) (queens 8)))
+test6 = iORefState (listProlog (nbs' (1800 :: Integer) (queens 8)))
 test7 = iORefState (listProlog (itd (queens 8)))
 
-
-
+main :: IO ()
+main = do
+  test5 >>= print
+  test6 >>= print
+  test7 >>= print
 
 
 
@@ -127,8 +129,8 @@ type Ref a = IORef a
 [operation|ReadRef  s :: Ref s      -> s     |]
 [operation|WriteRef s :: Ref s -> s -> ()    |]
 
-type RWComp s a = ([handles|h {ReadRef s}|], [handles| h {WriteRef s}|]) => Comp h a
-type RefComp s a =
+type RWComp s a = forall h. ([handles|h {ReadRef s}|], [handles| h {WriteRef s}|]) => Comp h a
+type RefComp s a = forall h.
   ([handles|h {NewRef s}|]
   ,[handles|h {ReadRef s}|]
   ,[handles|h {WriteRef s}|]) => Comp h a

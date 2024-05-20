@@ -50,3 +50,6 @@ import HIA.Handlers
       Return x    -> return x
       ShiftF p  k -> resetF (p k)
 |]
+
+main :: IO ()
+main = print "Nothing to do here"

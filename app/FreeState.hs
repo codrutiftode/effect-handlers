@@ -15,7 +15,7 @@ import HIA.DesugarHandlers
 [operation|Get s :: s|]
 [operation|Put s :: s -> ()|]
 
-type SComp s a =
+type SComp s a = forall h.
   ([handles|h {Get s}|], [handles|h {Put s}|]) => Comp h a
 
 [handler|
@@ -49,3 +49,6 @@ count =
 
 simple  n = simpleState n count
 forward n = printHandler (forwardState n count)
+
+main :: IO ()
+main = forward 100 >>= print

@@ -409,3 +409,6 @@ drunkCoin =
 dcoinAnd :: Int -> Q Bool
 dcoinAnd 1 = drunkCoin
 dcoinAnd n = drunkCoin &&& dcoinAnd (n-1)
+
+main :: IO ()
+main = importanceSamples 10 (dcoinAnd 3) 10 >>= print

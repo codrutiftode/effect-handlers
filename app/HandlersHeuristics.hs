@@ -12,12 +12,10 @@
 module HandlersHeuristics where
 
 import Prelude hiding (fail)
-import Control.Monad (when)
 
 import HIA.Handlers
-import Data.IORef
 import HIA.DesugarHandlers
-import HandlersMonadRef
+import HandlersMonadRef hiding (test1, test3)
 
 -- Prolog interface
 [operation| Toss :: Bool|]
@@ -45,7 +43,7 @@ guard True   =  return ()
 guard False  =  fail
 ------------------------------------------------
 
-type Tree a = [handles| h {Toss}|] => Comp h a
+type Tree a = forall h. [handles| h {Toss}|] => Comp h a
 type Heuristic a = Tree a -> Tree a
 
 [handler| forward h handles {Toss, Fail} .
@@ -118,7 +116,14 @@ nbs n comp = do r <- newRef n
 -- with overloading of effect operations (even at different types).
 
 -- tests
-test1 = listProlog (queens 8)
-test2 = listProlog (dbs  20 (queens 8))
-test3 = listProlog (dibs 20 (queens 8))
+test1 = iORefState (listProlog (queens 8))
+test2 = iORefState (listProlog (dbs 20 (queens 8)))
+test3 = iORefState (listProlog (dibs 20 (queens 8)))
 test4 = iORefState (listProlog (nbs 1800 (queens 8)))
+
+main :: IO ()
+main = do
+  test1 >>= print
+  test2 >>= print
+  test3 >>= print
+  test4 >>= print
