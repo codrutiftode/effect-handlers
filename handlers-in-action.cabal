@@ -54,12 +54,48 @@ library
     , template-haskell ==2.20.0.0
   default-language: Haskell2010
 
-executable handlers-in-action-exe
-  main-is: Choice.hs
+executable aop-exe
+  main-is: AOP.hs
   other-modules:
-      Paths_handlers_in_action
-  autogen-modules:
-      Paths_handlers_in_action
+      MRI_code.Advice
+      MRI_code.Effects
+      MRI_code.Interpreters
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is AOP
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable aopextra-exe
+  main-is: AOPExtra.hs
+  other-modules:
+      MRI_code.Advice
+      MRI_code.Effects
+      MRI_code.Interpreters
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is AOPExtra
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable choice-exe
+  main-is: Choice.hs
   hs-source-dirs:
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Choice
@@ -71,6 +107,486 @@ executable handlers-in-action-exe
     , mtl
     , parsec
     , random
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable codensitypipes-exe
+  main-is: CodensityPipes.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is CodensityPipes
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable codensitystate-exe
+  main-is: CodensityState.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is CodensityState
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable delimitedcontinuations-exe
+  main-is: DelimitedContinuations.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is DelimitedContinuations
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable exceptions-exe
+  main-is: Exceptions.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Exceptions
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable freepipes-exe
+  main-is: FreePipes.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is FreePipes
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable freestate-exe
+  main-is: FreeState.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is FreeState
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable handlersentwinedheuristics-exe
+  main-is: HandlersEntwinedHeuristics.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HandlersEntwinedHeuristics
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable handlersheuristics-exe
+  main-is: HandlersHeuristics.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HandlersHeuristics
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable handlersmonadref-exe
+  main-is: HandlersMonadRef.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HandlersMonadRef
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable hansei-exe
+  main-is: HANSEI.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is HANSEI
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable iteratees-exe
+  main-is: Iteratees.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Iteratees
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable lift-exe
+  main-is: Lift.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Lift
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable lifth-exe
+  main-is: LiftH.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is LiftH
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable list-exe
+  main-is: List.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is List
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable logic-exe
+  main-is: Logic.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Logic
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable nbe-exe
+  main-is: Nbe.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Nbe
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable nbe0-exe
+  main-is: Nbe0.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Nbe0
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable nim-exe
+  main-is: Nim.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Nim
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable olegiteratees-exe
+  main-is: OlegIteratees.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is OlegIteratees
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable parse-exe
+  main-is: Parse.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Parse
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable pipes-exe
+  main-is: Pipes.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Pipes
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable pipespipes-exe
+  main-is: PipesPipes.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is PipesPipes
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable plainstate-exe
+  main-is: PlainState.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is PlainState
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable primitiverecursion-exe
+  main-is: PrimitiveRecursion.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is PrimitiveRecursion
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable shallowiteratees-exe
+  main-is: ShallowIteratees.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is ShallowIteratees
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable shallowpipes-exe
+  main-is: ShallowPipes.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is ShallowPipes
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable shallowstate-exe
+  main-is: ShallowState.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is ShallowState
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable state-exe
+  main-is: State.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is State
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable stateiteratees-exe
+  main-is: StateIteratees.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is StateIteratees
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable updown-exe
+  main-is: UpDown.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is UpDown
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable wctail-exe
+  main-is: WcTail.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is WcTail
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
+    , template-haskell ==2.20.0.0
+  default-language: Haskell2010
+
+executable web-exe
+  main-is: Web.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-export-lists -Wno-incomplete-uni-patterns -Wno-name-shadowing -Wno-unused-matches -Wno-incomplete-patterns -Wno-unused-local-binds -Wno-unused-do-bind -threaded -rtsopts -with-rtsopts=-N -main-is Web
+  build-depends:
+      base >=4.7 && <5
+    , handlers-in-action
+    , haskell-src-exts
+    , haskell-src-meta
+    , mtl
+    , parsec
     , template-haskell ==2.20.0.0
   default-language: Haskell2010
 

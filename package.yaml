@@ -47,9 +47,40 @@ library:
   source-dirs: src
 
 executables:
-  handlers-in-action-exe:
+  aop-exe:
+    main:                AOP
+    source-dirs:         app
+    other-modules:
+    - MRI_code.Advice
+    - MRI_code.Effects
+    - MRI_code.Interpreters
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+    - containers
+
+  aopextra-exe:
+    main:                AOPExtra
+    source-dirs:         app
+    other-modules:
+    - MRI_code.Advice
+    - MRI_code.Effects
+    - MRI_code.Interpreters
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+    - containers
+
+  choice-exe:
     main:                Choice
     source-dirs:         app
+    other-modules:       []
     ghc-options:
     - -threaded
     - -rtsopts
@@ -57,6 +88,358 @@ executables:
     dependencies:
     - handlers-in-action
     - random
+
+  codensitypipes-exe:
+    main:                CodensityPipes
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  codensitystate-exe:
+    main:                CodensityState
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  delimitedcontinuations-exe:
+    main:                DelimitedContinuations
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  exceptions-exe:
+    main:                Exceptions
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  freepipes-exe:
+    main:                FreePipes
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  freestate-exe:
+    main:                FreeState
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  hansei-exe:
+    main:                HANSEI
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  handlersentwinedheuristics-exe:
+    main:                HandlersEntwinedHeuristics
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  handlersheuristics-exe:
+    main:                HandlersHeuristics
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  handlersmonadref-exe:
+    main:                HandlersMonadRef
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  iteratees-exe:
+    main:                Iteratees
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  lift-exe:
+    main:                Lift
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  lifth-exe:
+    main:                LiftH
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  list-exe:
+    main:                List
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  logic-exe:
+    main:                Logic
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  nbe-exe:
+    main:                Nbe
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  nbe0-exe:
+    main:                Nbe0
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  nim-exe:
+    main:                Nim
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  olegiteratees-exe:
+    main:                OlegIteratees
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  parse-exe:
+    main:                Parse
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  pipes-exe:
+    main:                Pipes
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  pipespipes-exe:
+    main:                PipesPipes
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  plainstate-exe:
+    main:                PlainState
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  primitiverecursion-exe:
+    main:                PrimitiveRecursion
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  shallowiteratees-exe:
+    main:                ShallowIteratees
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  shallowpipes-exe:
+    main:                ShallowPipes
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  shallowstate-exe:
+    main:                ShallowState
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  state-exe:
+    main:                State
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  stateiteratees-exe:
+    main:                StateIteratees
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  updown-exe:
+    main:                UpDown
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  wctail-exe:
+    main:                WcTail
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
+
+  web-exe:
+    main:                Web
+    source-dirs:         app
+    other-modules:       []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - handlers-in-action
 
 tests:
   handlers-in-action-test:
